@@ -22,18 +22,18 @@ class Mapper(object):
         """Parse user input into rover and gird endpoints."""
         user_input = user_input.split('\n')
         # grid co-ordinates
-        grid_start = tuple(0, 0)
-        grid_end = self.parse_grid_end(user_input[0])
+        grid_start = tuple([0, 0])
+        grid_end = self.parse_grid_endpoint(user_input[0])
 
         # initialize mars rover controller
         self.controller = MarsRoverController(grid_start, grid_end)
 
         # parse rovers position and initialize them
         rovers_with_instructions = zip(user_input[1::2], user_input[2::2])
-        for id, rover in enumerate(rovers_with_instructions):
+        for id, rover in enumerate(rovers_with_instructions, 1):
             self.parse_rover(id, rover)
 
-    def parse_grid_end(self, grid_end):
+    def parse_grid_endpoint(self, grid_end):
         """Parse the grid endpoint string into a tuple."""
         try:
             return tuple([int(e) for e in grid_end.strip().split(' ')])
@@ -49,7 +49,7 @@ class Mapper(object):
         if len(point) == 3:
             try:
                 position = tuple([int(point[0]), int(point[1]), point[2].upper()])
-            except ValueError:
+            except ValueError, e:
                 raise ValueError('Invalid rover position must be: int int str')
 
             instructions = [move.upper() for move in input[1].strip()]
@@ -91,11 +91,13 @@ class Mapper(object):
         next_point = MarsRoverInstructions.move_direction(current_dir)
         self.controller.move(rover.id, next_point)
 
-    def show_stats(self):
+    def final_locations(self):
         """Display the current grid point location for each rover."""
+        locations = ''
         for rover in self.rovers:
-            print rover
+            locations += str(rover)
 
+        return locations
 
 def main():
     """Read user input and delegate mapping rovers."""
@@ -123,7 +125,7 @@ def main():
     mapper = Mapper()
     mapper.parse_input(user_input)
     mapper.delegate()
-    mapper.show_stats()
+    print mapper.final_locations()
 
 
 if __name__ == "__main__":

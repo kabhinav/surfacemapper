@@ -2,6 +2,7 @@ import unittest
 
 from surfacemapper.mars_rover_instructions import MarsRoverInstructions
 
+
 class TestMarsRoverInstructions(unittest.TestCase):
 
     def test_move_directions(self):
@@ -18,7 +19,7 @@ class TestMarsRoverInstructions(unittest.TestCase):
         self.assertEqual(move, (0, -1))
 
     def test_move_directions_keyerror(self):
-        with self.assertRaises(Exception):
+        with self.assertRaises(KeyError):
             MarsRoverInstructions.move_direction('NW')
 
     def test_left_spin(self):
@@ -28,7 +29,7 @@ class TestMarsRoverInstructions(unittest.TestCase):
         self.assertEqual(MarsRoverInstructions.left_spin('E'), 'N')
 
     def test_left_spin_keyerror(self):
-        with self.assertRaises(Exception):
+        with self.assertRaises(KeyError):
             MarsRoverInstructions.left_spin('NE')
 
     def test_right_spin(self):
@@ -38,5 +39,5 @@ class TestMarsRoverInstructions(unittest.TestCase):
         self.assertEqual(MarsRoverInstructions.right_spin('W'), 'N')
 
     def test_right_spin_keyerror(self):
-        with self.assertRaises(Exception):
+        with self.assertRaises(KeyError):
             MarsRoverInstructions.right_spin('SW')

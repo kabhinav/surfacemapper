@@ -4,6 +4,7 @@ Interpretation for any additional direction or a move, if required,
 will be declared in this class.
 """
 
+
 class MarsRoverInstructions(object):
     """Interpretation of directions for a Mars rover movement."""
 
@@ -16,24 +17,24 @@ class MarsRoverInstructions(object):
         """Return move of a rover on grid according to its current direction."""
         try:
             return cls.mdirection[direction]
-        except KeyError:
-            raise Exception('Invalid direction for moving forward: %s' %
-                            direction)
+        except KeyError, e:
+            raise KeyError('Invalid direction for moving forward: %s' %
+                           direction)
 
     @classmethod
     def left_spin(cls, direction):
         """Resulting direction of rover after a left spin."""
         try:
             return cls.lspin[direction]
-        except KeyError:
-            raise Exception('Invalid direction for a left spin: %s' %
-                            direction)
+        except KeyError, e:
+            raise KeyError('Invalid direction for a left spin: %s' %
+                           direction)
 
     @classmethod
     def right_spin(cls, direction):
         """Resulting direction of rover after a right spin."""
         try:
             return cls.rspin[direction]
-        except KeyError:
-            raise Exception('Invalid direction for a right spin: %s' %
-                            direction)
+        except KeyError, e:
+            raise KeyError('Invalid direction for a right spin: %s' %
+                           direction)

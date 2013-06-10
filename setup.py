@@ -10,12 +10,13 @@ depends_upon = [
     'nose',
     'nosexcover',
     'coverage',
+    'mock',
     'yanc',
 ]
 
 setup(
     name = 'surfacemapper',
-    version = '0.1',
+    version = '1.0',
     packages = find_packages(exclude=["tests"]),
     setup_requires = depends_upon,
     install_requires = depends_upon,

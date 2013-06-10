@@ -28,12 +28,10 @@ class RoverController(object):
 
         Must be overridden by subclass.
         """
-        pass
 
     def turn(self, rover_id, new_direction):
         """Turn the rover with id in the new direction.
         overridden in subclass."""
-        pass
 
     def check_grid_position(self, position):
         """Checks the input grid position.
