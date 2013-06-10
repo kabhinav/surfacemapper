@@ -1,20 +1,21 @@
+"""Provides interpretation of directions for moving a Mars rover.
+
+Interpretation for any additional direction or a move, if required,
+will be declared in this class.
+"""
 
 class MarsRoverInstructions(object):
-    """Provides interpretation of directions for moving a Mars rover.
+    """Interpretation of directions for a Mars rover movement."""
 
-    Interpretation for any additional direction, if required, can be
-    declared here.
-    """
-
-    move_direction = {'N': (0, 1), 'S': (0, -1), 'E': (1, 0), 'W': (-1, 0)}
-    left_spin = {'N': 'W', 'E': 'N', 'S': 'E', 'W': 'S'}
-    right_spin = {'E': 'S', 'W': 'N', 'N': 'E', 'S': 'W'}
+    mdirection = {'N': (0, 1), 'S': (0, -1), 'E': (1, 0), 'W': (-1, 0)}
+    lspin = {'N': 'W', 'E': 'N', 'S': 'E', 'W': 'S'}
+    rspin = {'E': 'S', 'W': 'N', 'N': 'E', 'S': 'W'}
 
     @classmethod
     def move_direction(cls, direction):
-        """Return move of a rover on grid according to its direction."""
+        """Return move of a rover on grid according to its current direction."""
         try:
-            return cls.move_direction[direction]
+            return cls.mdirection[direction]
         except KeyError:
             raise Exception('Invalid direction for moving forward: %s' %
                             direction)
@@ -23,7 +24,7 @@ class MarsRoverInstructions(object):
     def left_spin(cls, direction):
         """Resulting direction of rover after a left spin."""
         try:
-            return cls.left_spin[direction]
+            return cls.lspin[direction]
         except KeyError:
             raise Exception('Invalid direction for a left spin: %s' %
                             direction)
@@ -32,7 +33,7 @@ class MarsRoverInstructions(object):
     def right_spin(cls, direction):
         """Resulting direction of rover after a right spin."""
         try:
-            return cls.right_spin[direction]
+            return cls.rspin[direction]
         except KeyError:
             raise Exception('Invalid direction for a right spin: %s' %
                             direction)

@@ -1,10 +1,21 @@
-"""Rover model."""
+"""Rover class implements a rover used for mapping a surface.
+
+A rover object consists of a unique identifier, its position information
+and the surface mapping instructions.
+"""
 
 
 class Rover(object):
-    """Rover class"""
+    """Rover object."""
 
     def __init__(self, id_, position, instructions):
+        """Create a rover instance.
+
+        Input params:
+        'id':  rover's unique identifier
+        'position': current location of a rover on mapping grid
+        'instructions': mapping instructions of the rover
+        """
         self.id = id_
         self.position = position
         self.instructions = instructions
@@ -16,10 +27,10 @@ class Rover(object):
 
     def _set_instructions(self, instructions):
         """Set the Rover's instructions."""
-        if isinstance(instructions, list):
+        if isinstance(instructions, list) and len(instructions) > 0:
             self._instructions = instructions
         else:
-            raise ValueError('instructions must be a list.')
+            raise ValueError('instructions must be a non-empty list.')
 
     def _get_instructions(self):
         """Return the Rover's instructions."""
