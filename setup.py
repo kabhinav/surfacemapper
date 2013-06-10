@@ -27,4 +27,5 @@ setup(
             ],
         },
     description = 'Rovers squad for mapping Martian surface.',
+    author = 'Kumar Abhinav'
 )
