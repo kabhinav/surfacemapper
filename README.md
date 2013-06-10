@@ -16,9 +16,9 @@ $ nosetests
 If all the tests successfully pass then program can be executed by running:
 
 $ surfacemapper
-```
+
 OR
-```bash
+
 $ cat surfacemapper/data/input.txt | python surfacemapper/mapper.py
 ```
 
@@ -58,8 +58,7 @@ OUTPUT
 _____
 The output for each rover should be its final co­ordinates and heading.
 
-Test Input
-__________
+Test Input:
 5 5<br>
 1 2 N<br>
 LMLMLMLMM<br>
@@ -67,6 +66,5 @@ LMLMLMLMM<br>
 MMRMMRMRRM
 
 Expected Output:
-_______________
 1 3 N<br>
 5 1 E
