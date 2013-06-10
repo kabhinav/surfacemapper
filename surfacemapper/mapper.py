@@ -38,7 +38,7 @@ class Mapper(object):
         try:
             return tuple([int(e) for e in grid_end.strip().split(' ')])
         except ValueError, e:
-            raise ValueError('invalid grid endpoint, required int int')
+            raise ValueError('invalid plateau end point, required int int')
 
     def parse_rover(self, id_, input):
         """Parse input and add rover along with instructions.
@@ -109,7 +109,7 @@ def main():
         user_input += grid_endpoint + '\n'
         while(True):
             rover = raw_input('Please enter rover position e.g. x y D: ')
-            if rover == ('q' or 'quit'):
+            if rover == '':
                 break
             else:
                 user_input += rover + '\n'
