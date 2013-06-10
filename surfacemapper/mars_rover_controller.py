@@ -1,4 +1,4 @@
-from rover_controller import RoverController
+from surfacemapper.rover_controller import RoverController
 
 
 class MarsRoverController(RoverController):
