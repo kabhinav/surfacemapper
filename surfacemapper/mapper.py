@@ -48,12 +48,13 @@ class Mapper(object):
         point = input[0].strip().split(' ')
         if len(point) == 3:
             try:
-                position = tuple([int(point[0]), int(point[1]), point[2]])
+                position = tuple([int(point[0]), int(point[1]), point[2].upper()])
             except ValueError:
                 raise ValueError('Invalid rover position must be: int int str')
 
-            instructions = [move for move in input[1].strip()]
+            instructions = [move.upper() for move in input[1].strip()]
             rover = Rover(id_, position, instructions)
+            self.controller.add_rover(id_, rover)
             self.rovers.append(rover)
         else:
             raise Exception('Rover is not correctly specified.')
@@ -76,19 +77,19 @@ class Mapper(object):
         """Turn the given rover left."""
         current_dir = rover.position[2]
         after_dir = MarsRoverInstructions.left_spin(current_dir)
-        self.controller.turn(rover, after_dir)
+        self.controller.turn(rover.id, after_dir)
 
     def turn_right(self, rover):
         """Turn the given rover right."""
         current_dir = rover.position[2]
         after_dir = MarsRoverInstructions.right_spin(current_dir)
-        self.controller.turn(rover, after_dir)
+        self.controller.turn(rover.id, after_dir)
 
     def move(self, rover):
         """Move the given rover one grid point."""
         current_dir = rover.position[2]
         next_point = MarsRoverInstructions.move_direction(current_dir)
-        self.controller.move(rover, next_point)
+        self.controller.move(rover.id, next_point)
 
     def show_stats(self):
         """Display the current grid point location for each rover."""
