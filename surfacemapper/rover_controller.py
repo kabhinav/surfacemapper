@@ -1,6 +1,6 @@
 
 class RoverController(object):
-    """Base controller for a rover."""
+    """Base controller class for a rover."""
 
     def __init__(self, grid_origin, grid_end):
         """Create a rover controller.
@@ -25,7 +25,9 @@ class RoverController(object):
 
     def move(self, rover_id, grid_point):
         """Moves the rover with id to the input grid point.
-        Overridden in subclass."""
+
+        Must be overridden by subclass.
+        """
         pass
 
     def turn(self, rover_id, new_direction):
