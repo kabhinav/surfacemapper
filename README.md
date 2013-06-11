@@ -17,6 +17,9 @@ If all the tests successfully pass then program can be executed by running:
 
 $ surfacemapper
 
+Follow the program instructions for entering input. To see results, press
+Enter (return) when you are prompt to enter co-ordinates of another rover.
+
 OR
 
 $ cat surfacemapper/data/input.txt | python surfacemapper/mapper.py
