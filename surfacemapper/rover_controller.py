@@ -40,11 +40,10 @@ class RoverController(object):
         and it should be empty, i.e., no other rover should be present.
         """
         if not self.is_empty(position):
-            raise Exception('Rover is already present at location: %s' %
-                            position)
+            raise Exception('Another rover is already present at location')
+
         if not self.inside_grid(position):
-            raise Exception('Position %s is not with in the grid.' %
-                            position)
+            raise Exception('New rover position is not with in the grid.')
 
     def is_empty(self, position):
         """Checks if a grid position is empty or not."""
@@ -61,7 +60,10 @@ class RoverController(object):
             return False
         elif (y < self.grid_origin[1]) or (y > self.grid_end[1]):
             return False
-        elif d not in self.directions:
-            return False
 
         return True
+
+    def check_rover_direction(self, direction):
+        """Checks if an input direction is valid."""
+        if direction not in self.directions:
+            raise Exception('Invalid turn direction for rover.')

@@ -25,12 +25,9 @@ class MarsRoverController(RoverController):
         rover = self.rovers[rover_id]
         x, y, d = rover.position
 
-        # Compute new rover position, heading will change to new direction
-        # (x, y) will remain unchanged
-        new_position = (x, y, direction)
-
         # Check new grid postion
-        self.check_grid_position(new_position)
+        self.check_rover_direction(direction)
 
-        # Set the rover's new position
-        rover.position = new_position
+        # new rover position, heading will change to new direction
+        # (x, y) will remain unchanged
+        rover.position = (x, y, direction)

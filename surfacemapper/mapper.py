@@ -70,7 +70,7 @@ class Mapper(object):
                 elif instruction == 'M':
                     self.move(rover)
                 else:
-                    raise Exception('Unknown instruction %s for rover %r' %
+                    raise Exception("Unknown instruction '%s' for rover at %r" %
                                     (instruction, rover))
 
     def turn_left(self, rover):

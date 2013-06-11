@@ -22,6 +22,23 @@ OR
 $ cat surfacemapper/data/input.txt | python surfacemapper/mapper.py
 ```
 
+Note: During the installation if you get following error:
+```python
+from distribute_setup import use_setuptools
+     use_setuptools()
+ImportError: No module named distribute_setup
+```
+then the system is missing distribute package. It can be installed by:
+```bash
+$ wget http://python-distribute.org/distribute_setup.py
+
+$ python distribute_setup.py
+
+after installation of distribute, try again:
+
+$ python setup.py install
+```
+
 PROBLEM: MARS ROVERS
 ____________________
 A squad of robotic rovers are to be landed by NASA on a plateau on Mars.
